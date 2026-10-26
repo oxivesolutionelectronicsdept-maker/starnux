@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="A new experience is on the way.">
-  <title>Nova — Coming Soon</title>
+  <title>starnux— Coming Soon</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
 
@@ -170,10 +170,10 @@
       <aside class="launch-card">
         <p>Until lift-off</p>
         <div class="countdown" aria-label="Countdown timer">
-          <div><strong>21</strong><span>Days</span></div>
-          <div><strong>08</strong><span>Hours</span></div>
-          <div><strong>46</strong><span>Minutes</span></div>
-          <div><strong>12</strong><span>Seconds</span></div>
+          <div><strong id="days">00</strong><span>Days</span></div>
+          <div><strong id="hours">00</strong><span>Hours</span></div>
+          <div><strong id="minutes">00</strong><span>Minutes</span></div>
+          <div><strong id="seconds">00</strong><span>Seconds</span></div>
         </div>
         <div class="card-bottom"><span class="avatars"><i></i><i></i><i></i></span> Join 2,000+ curious people</div>
       </aside>
@@ -184,5 +184,31 @@
       <nav class="socials" aria-label="Social media"><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">X / Twitter</a></nav>
     </footer>
   </div>
+  <script>
+    const launchDate = new Date('2026-11-01T00:00:00');
+    const timeUnits = {
+      days: document.getElementById('days'),
+      hours: document.getElementById('hours'),
+      minutes: document.getElementById('minutes'),
+      seconds: document.getElementById('seconds')
+    };
+
+    function updateCountdown() {
+      const timeRemaining = Math.max(0, launchDate - new Date());
+      const totalSeconds = Math.floor(timeRemaining / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor(totalSeconds % 86400 / 3600);
+      const minutes = Math.floor(totalSeconds % 3600 / 60);
+      const seconds = totalSeconds % 60;
+
+      timeUnits.days.textContent = String(days).padStart(2, '0');
+      timeUnits.hours.textContent = String(hours).padStart(2, '0');
+      timeUnits.minutes.textContent = String(minutes).padStart(2, '0');
+      timeUnits.seconds.textContent = String(seconds).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
 </body>
 </html>
