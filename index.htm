@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="A new experience is on the way.">
+  <meta name="description" content="Starnux Innovations provides complete drone solutions for every mission.">
   <title>starnux— Coming Soon</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
 
     :root {
-      --ink: #f6f2ea;
-      --muted: #a9a29a;
-      --orange: #ff6b3d;
-      --yellow: #ffc84a;
-      --panel: rgba(255, 255, 255, .06);
-      --line: rgba(255, 255, 255, .13);
+      --ink: #f1f8ff;
+      --muted: #a9c0d6;
+      --orange: #56bfff;
+      --yellow: #9edcff;
+      --panel: rgba(31, 103, 151, .18);
+      --line: rgba(161, 218, 255, .2);
     }
 
     * { box-sizing: border-box; }
@@ -24,7 +24,7 @@
       margin: 0;
       overflow-x: hidden;
       color: var(--ink);
-      background: #171616;
+      background: #041426;
       font-family: "Manrope", Arial, sans-serif;
     }
 
@@ -50,8 +50,8 @@
       height: min(59vw, 760px);
       top: -350px;
       right: -130px;
-      background: radial-gradient(circle at 35% 65%, #ffce69 0 4%, #ff874f 30%, #df3c35 58%, transparent 70%);
-      opacity: .96;
+      background: radial-gradient(circle at 35% 65%, #c2ecff 0 4%, #57bfff 29%, #176ba8 56%, transparent 70%);
+      opacity: .82;
     }
 
     .orb-two {
@@ -59,8 +59,8 @@
       height: 430px;
       bottom: -250px;
       left: -180px;
-      background: radial-gradient(circle, #4f459a, transparent 67%);
-      opacity: .62;
+      background: radial-gradient(circle, #0a5c9f, transparent 67%);
+      opacity: .7;
     }
 
     header, footer { display: flex; align-items: center; justify-content: space-between; }
@@ -68,19 +68,31 @@
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      color: var(--ink);
-      font-size: 17px;
-      font-weight: 800;
-      letter-spacing: -.7px;
+      gap: 12px;
+      color: #f5fbff;
+      font-size: clamp(1.5rem, 2.3vw, 2rem);
+      font-weight: 700;
+      letter-spacing: .015em;
+      line-height: 1;
       text-decoration: none;
     }
 
-    .brand-mark { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 9px; background: var(--orange); color: #1e1614; font-size: 19px; line-height: 1; }
+    .brand-mark-icon {
+      width: 43px;
+      height: 43px;
+      flex: 0 0 43px;
+      border: 1px solid rgba(255, 255, 255, .22);
+      border-radius: 11px;
+      background: #eaf7ff;
+      object-fit: cover;
+      padding: 3px;
+    }
+
+    .brand-dot { margin-left: -.1em; color: var(--orange); }
 
     .status {
-      color: #161313;
-      background: #f7f1e7;
+      color: #083459;
+      background: #d8f0ff;
       border-radius: 100px;
       padding: 9px 14px;
       font-family: "DM Mono", monospace;
@@ -94,36 +106,63 @@
 
     .intro { max-width: 720px; }
 
-    .eyebrow { display: flex; align-items: center; gap: 9px; margin: 0 0 22px; color: #d9d1c5; font-family: "DM Mono", monospace; font-size: 11px; letter-spacing: .11em; text-transform: uppercase; }
-    .eyebrow::before { width: 8px; height: 8px; border-radius: 100%; background: var(--orange); box-shadow: 0 0 0 5px rgba(255, 107, 61, .13); content: ""; }
+    .eyebrow { display: flex; align-items: center; gap: 9px; margin: 0 0 22px; color: #cfe7f8; font-family: "DM Mono", monospace; font-size: 11px; letter-spacing: .11em; text-transform: uppercase; }
+    .eyebrow::before { width: 8px; height: 8px; border-radius: 100%; background: var(--orange); box-shadow: 0 0 0 5px rgba(86, 191, 255, .15); content: ""; }
 
     h1 { max-width: 680px; margin: 0; font-size: clamp(3.25rem, 6.3vw, 6.5rem); font-weight: 700; letter-spacing: -.075em; line-height: .99; }
     h1 em { color: var(--yellow); font-style: normal; }
     .description { max-width: 515px; margin: 28px 0 34px; color: var(--muted); font-size: 17px; line-height: 1.75; }
 
-    .notify-form { display: flex; max-width: 480px; padding: 5px; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); backdrop-filter: blur(10px); }
-    .notify-form input { min-width: 0; flex: 1; border: 0; outline: 0; padding: 0 13px; color: var(--ink); background: transparent; font: inherit; font-size: 13px; }
-    .notify-form input::placeholder { color: #9b958e; }
-    .notify-form button { cursor: pointer; border: 0; border-radius: 10px; padding: 14px 17px; color: #21130e; background: var(--orange); font: 700 12px "Manrope", sans-serif; transition: transform .2s, background .2s; }
-    .notify-form button:hover { background: #ff8159; transform: translateY(-1px); }
-    .form-note { margin: 12px 0 0 3px; color: #8c8680; font-size: 11px; }
+    .contact-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .contact-button { display: inline-flex; align-items: center; gap: 9px; border: 1px solid var(--line); border-radius: 12px; padding: 13px 17px; color: var(--ink); background: var(--panel); font-size: 13px; font-weight: 700; text-decoration: none; transition: transform .2s, background .2s, border-color .2s; }
+    .contact-button:hover { border-color: var(--orange); background: rgba(86, 191, 255, .2); transform: translateY(-2px); }
+    .contact-button svg { width: 18px; height: 18px; fill: currentColor; }
+    .contact-button.whatsapp { color: #dffff0; background: rgba(37, 211, 102, .16); border-color: rgba(83, 230, 139, .34); }
+    .contact-button.instagram { color: #e6edff; background: rgba(155, 89, 255, .15); border-color: rgba(179, 131, 255, .34); }
 
-    .launch-card { align-self: center; max-width: 385px; justify-self: end; width: 100%; padding: 29px; border: 1px solid var(--line); border-radius: 24px; background: linear-gradient(145deg, rgba(255,255,255,.12), rgba(255,255,255,.035)); box-shadow: 20px 24px 55px rgba(0,0,0,.22); backdrop-filter: blur(13px); }
-    .launch-card > p { margin: 0 0 24px; color: #c2bbb1; font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+    .launch-card { align-self: center; max-width: 385px; justify-self: end; width: 100%; padding: 29px; border: 1px solid var(--line); border-radius: 24px; background: linear-gradient(145deg, rgba(69,158,216,.3), rgba(8,41,76,.5)); box-shadow: 20px 24px 55px rgba(0,8,20,.38); backdrop-filter: blur(13px); }
+    .launch-card > p { margin: 0 0 24px; color: #b7d6ea; font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+    .flight-visual { position: relative; display: grid; height: 250px; place-items: center; overflow: hidden; margin: -4px 0 23px; border: 1px solid rgba(159, 217, 255, .13); border-radius: 17px; background: radial-gradient(circle at 50% 55%, rgba(76, 178, 240, .25), transparent 48%), linear-gradient(135deg, rgba(2, 31, 60, .78), rgba(7, 58, 100, .35)); }
+    .flight-visual::before, .flight-visual::after { position: absolute; content: ""; pointer-events: none; }
+    .flight-visual::before { inset: 0; background: linear-gradient(rgba(159, 217, 255, .08) 1px, transparent 1px), linear-gradient(90deg, rgba(159, 217, 255, .08) 1px, transparent 1px); background-size: 26px 26px; mask-image: linear-gradient(to bottom, transparent, #000 25%, #000 75%, transparent); }
+    .flight-visual::after { width: 130%; height: 2px; top: 12%; left: -15%; background: linear-gradient(90deg, transparent, #a9e4ff, transparent); box-shadow: 0 0 14px #65caff; animation: scan 3.5s ease-in-out infinite; }
+    .flight-radar { position: absolute; width: 185px; height: 185px; border: 1px solid rgba(126, 214, 255, .15); border-radius: 50%; box-shadow: 0 0 0 27px rgba(126, 214, 255, .035), 0 0 0 54px rgba(126, 214, 255, .025); animation: radar-pulse 3s ease-out infinite; }
+    .flight-radar::before, .flight-radar::after { position: absolute; top: 50%; left: 50%; background: rgba(145, 221, 255, .18); content: ""; transform: translate(-50%, -50%); }
+    .flight-radar::before { width: 100%; height: 1px; }
+    .flight-radar::after { width: 1px; height: 100%; }
+    .flight-route { position: absolute; width: 130%; height: 110%; z-index: 0; }
+    .flight-route path { fill: none; stroke: rgba(131, 218, 255, .6); stroke-width: 1.3; stroke-dasharray: 8 7; animation: route-flow 4s linear infinite; }
+    .drone-svg { position: relative; z-index: 1; width: 270px; color: #b9e8ff; filter: drop-shadow(0 0 10px rgba(79, 192, 255, .42)); animation: drone-float 4s ease-in-out infinite; }
+    .drone-svg .frame { fill: rgba(20, 106, 163, .13); stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 4; }
+    .drone-svg .propeller { fill: none; stroke: #6ecbff; stroke-width: 3; transform-box: fill-box; transform-origin: center; animation: spin 1.2s linear infinite; }
+    .drone-svg .light { fill: #72d4ff; filter: drop-shadow(0 0 5px #72d4ff); animation: blink 1s ease-in-out infinite alternate; }
+    .solution-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 19px; }
+    .solution-tags span { border: 1px solid rgba(159, 217, 255, .16); border-radius: 99px; padding: 6px 9px; color: #c6e6f8; background: rgba(20, 104, 160, .18); font: 9px "DM Mono", monospace; letter-spacing: .04em; text-transform: uppercase; }
+    .flight-readout { position: absolute; z-index: 2; color: #bfe8ff; font: 8px "DM Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
+    .flight-readout span { display: block; margin-top: 4px; color: #6dcaff; font-size: 10px; }
+    .readout-left { top: 19px; left: 18px; }
+    .readout-right { right: 18px; bottom: 19px; text-align: right; }
+
+    @keyframes drone-float { 0%, 100% { transform: translateY(5px) rotate(-1.5deg); } 50% { transform: translateY(-7px) rotate(1.5deg); } }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes blink { to { opacity: .35; } }
+    @keyframes scan { 0%, 100% { transform: translateY(0); opacity: .25; } 50% { transform: translateY(130px); opacity: 1; } }
+    @keyframes route-flow { to { stroke-dashoffset: -120; } }
+    @keyframes radar-pulse { 0% { transform: scale(.92); opacity: .35; } 65% { transform: scale(1.08); opacity: 1; } 100% { transform: scale(1.16); opacity: 0; } }
     .countdown { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px; }
-    .countdown div { padding: 14px 5px; border-radius: 12px; background: rgba(12, 12, 12, .27); text-align: center; }
+    .countdown div { padding: 14px 5px; border-radius: 12px; background: rgba(2, 23, 45, .46); text-align: center; }
     .countdown strong { display: block; font-size: clamp(1.4rem, 2.3vw, 2rem); font-weight: 600; letter-spacing: -.06em; }
-    .countdown span { color: #a8a098; font-family: "DM Mono", monospace; font-size: 8px; letter-spacing: .08em; text-transform: uppercase; }
-    .card-bottom { display: flex; align-items: center; gap: 10px; margin-top: 23px; padding-top: 20px; border-top: 1px solid var(--line); color: #ded7ce; font-size: 12px; }
+    .countdown span { color: #9ec0d8; font-family: "DM Mono", monospace; font-size: 8px; letter-spacing: .08em; text-transform: uppercase; }
+    .card-bottom { display: flex; align-items: center; gap: 10px; margin-top: 23px; padding-top: 20px; border-top: 1px solid var(--line); color: #d4ebfa; font-size: 12px; }
     .avatars { display: flex; }
-    .avatars i { display: block; width: 22px; height: 22px; margin-left: -6px; border: 2px solid #4e423f; border-radius: 50%; }
-    .avatars i:first-child { margin-left: 0; background: #ff956e; }
-    .avatars i:nth-child(2) { background: #7b92e7; }
-    .avatars i:nth-child(3) { background: #e8cc76; }
+    .avatars i { display: block; width: 22px; height: 22px; margin-left: -6px; border: 2px solid #0a385e; border-radius: 50%; }
+    .avatars i:first-child { margin-left: 0; background: #6ed3ff; }
+    .avatars i:nth-child(2) { background: #4b84d8; }
+    .avatars i:nth-child(3) { background: #8bbee7; }
 
-    footer { color: #928b84; font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: .03em; }
+    footer { color: #7e9eb8; font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: .03em; }
     .socials { display: flex; gap: 18px; }
-    .socials a { color: #cbc4bc; text-decoration: none; transition: color .2s; }
+    .socials a { color: #c4e2f5; text-decoration: none; transition: color .2s; }
     .socials a:hover { color: var(--orange); }
 
     @media (max-width: 760px) {
@@ -138,9 +177,10 @@
       .status { padding: 8px 10px; font-size: 8px; }
       h1 { font-size: 3.1rem; }
       .description { font-size: 15px; }
-      .notify-form { display: grid; gap: 8px; padding: 8px; }
-      .notify-form input { min-height: 38px; }
-      .notify-form button { padding: 13px; }
+      .contact-actions { flex-direction: column; align-items: stretch; }
+      .contact-button { justify-content: center; }
+      .flight-visual { height: 225px; }
+      .drone-svg { width: 235px; }
       footer { align-items: flex-start; gap: 17px; flex-direction: column; }
     }
   </style>
@@ -151,37 +191,50 @@
     <div class="orb orb-two"></div>
 
     <header>
-      <a class="brand" href="#"><span class="brand-mark">✦</span>starnux</a>
-      <span class="status">Launching soon</span>
+      <a class="brand" href="#" aria-label="Starnux Innovations home"><img class="brand-mark-icon" src="starnux-mark.jpeg" alt="">starnux<span class="brand-dot">.</span></a>
+      <span class="status">Drone innovations</span>
     </header>
 
     <main>
       <section class="intro">
-        <p class="eyebrow">Something new is forming</p>
-        <h1>The next big thing is <em>almost here.</em></h1>
-        <p class="description">We are building a brighter, simpler way to make the moments that matter feel extraordinary. A little patience—this will be worth it.</p>
-        <form class="notify-form" action="#">
-          <input type="email" aria-label="Email address" placeholder="Enter your email address" required>
-          <button type="submit">Keep me posted →</button>
-        </form>
-        <p class="form-note">No spam, ever. Only the good news.</p>
+        <p class="eyebrow">Engineering the future of flight</p>
+        <h1>Complete drone solutions for <em>every mission.</em></h1>
+        <p class="description">Starnux Innovations builds intelligent aerial systems for surveying, inspections, agriculture, security, and custom UAV operations.</p>
+        <div class="contact-actions">
+          <a class="contact-button whatsapp" href="https://wa.me/919074315600" target="_blank" rel="noopener noreferrer">WhatsApp us &rarr;</a>
+          <a class="contact-button instagram" href="https://www.instagram.com/starnuxinnovations?mdxt=eDgyN2V6aTc1ZWYx" target="_blank" rel="noopener noreferrer">Follow on Instagram &rarr;</a>
+        </div>
       </section>
 
       <aside class="launch-card">
-        <p>Until lift-off</p>
+        <p>Autonomous flight systems</p>
+        <div class="flight-visual" aria-hidden="true">
+          <div class="flight-radar"></div>
+          <svg class="flight-route" viewBox="0 0 400 260" preserveAspectRatio="none"><path d="M-5 215C65 140 85 235 165 161S284 34 405 86"/><path d="M-5 72C72 133 116 36 201 85s102 110 204 49"/></svg>
+          <div class="flight-readout readout-left">Altitude<span>120 M</span></div>
+          <div class="flight-readout readout-right">Signal<span>98.4 %</span></div>
+          <svg class="drone-svg" viewBox="0 0 260 170" fill="none">
+            <path class="frame" d="M130 58 105 77H76l-22-19m76 0 25 19h29l22-19M105 77l-23 30m73-30 23 30M82 107h96l-20 24h-56l-20-24Z"/>
+            <path class="frame" d="M105 77h50l-11 33h-28l-11-33Zm15 33h20l-10 17-10-17Z"/>
+            <path class="propeller" d="M24 52h46M47 29v46"/><path class="propeller" d="M190 52h46m-23-23v46"/>
+            <path class="propeller" d="M53 118h40m-20-20v40"/><path class="propeller" d="M167 118h40m-20-20v40"/>
+            <circle class="light" cx="130" cy="120" r="4"/>
+          </svg>
+        </div>
         <div class="countdown" aria-label="Countdown timer">
           <div><strong id="days">00</strong><span>Days</span></div>
           <div><strong id="hours">00</strong><span>Hours</span></div>
           <div><strong id="minutes">00</strong><span>Minutes</span></div>
           <div><strong id="seconds">00</strong><span>Seconds</span></div>
         </div>
-        <div class="card-bottom"><span class="avatars"><i></i><i></i><i></i></span> Join 2,000+ curious people</div>
+        <div class="solution-tags"><span>Mapping</span><span>Inspection</span><span>Custom UAV</span></div>
+        <div class="card-bottom"><span class="avatars"><i></i><i></i><i></i></span> Precision from take-off to insight</div>
       </aside>
     </main>
 
     <footer>
       <span>© 2026 starnux innovations</span>
-      <nav class="socials" aria-label="Social media"><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">X / Twitter</a></nav>
+      
     </footer>
   </div>
   <script>
