@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A new experience is on the way.">
+  <title>Nova — Coming Soon</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+    :root {
+      --ink: #f6f2ea;
+      --muted: #a9a29a;
+      --orange: #ff6b3d;
+      --yellow: #ffc84a;
+      --panel: rgba(255, 255, 255, .06);
+      --line: rgba(255, 255, 255, .13);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--ink);
+      background: #171616;
+      font-family: "Manrope", Arial, sans-serif;
+    }
+
+    .page {
+      position: relative;
+      min-height: 100vh;
+      isolation: isolate;
+      display: flex;
+      flex-direction: column;
+      padding: 28px clamp(24px, 5vw, 78px) 34px;
+    }
+
+    .orb {
+      position: absolute;
+      z-index: -1;
+      border-radius: 50%;
+      filter: blur(3px);
+      pointer-events: none;
+    }
+
+    .orb-one {
+      width: min(59vw, 760px);
+      height: min(59vw, 760px);
+      top: -350px;
+      right: -130px;
+      background: radial-gradient(circle at 35% 65%, #ffce69 0 4%, #ff874f 30%, #df3c35 58%, transparent 70%);
+      opacity: .96;
+    }
+
+    .orb-two {
+      width: 430px;
+      height: 430px;
+      bottom: -250px;
+      left: -180px;
+      background: radial-gradient(circle, #4f459a, transparent 67%);
+      opacity: .62;
+    }
+
+    header, footer { display: flex; align-items: center; justify-content: space-between; }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ink);
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -.7px;
+      text-decoration: none;
+    }
+
+    .brand-mark { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 9px; background: var(--orange); color: #1e1614; font-size: 19px; line-height: 1; }
+
+    .status {
+      color: #161313;
+      background: #f7f1e7;
+      border-radius: 100px;
+      padding: 9px 14px;
+      font-family: "DM Mono", monospace;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    main { display: grid; flex: 1; align-content: center; grid-template-columns: 1.1fr .9fr; gap: 60px; padding: 65px 0 48px; }
+
+    .intro { max-width: 720px; }
+
+    .eyebrow { display: flex; align-items: center; gap: 9px; margin: 0 0 22px; color: #d9d1c5; font-family: "DM Mono", monospace; font-size: 11px; letter-spacing: .11em; text-transform: uppercase; }
+    .eyebrow::before { width: 8px; height: 8px; border-radius: 100%; background: var(--orange); box-shadow: 0 0 0 5px rgba(255, 107, 61, .13); content: ""; }
+
+    h1 { max-width: 680px; margin: 0; font-size: clamp(3.25rem, 6.3vw, 6.5rem); font-weight: 700; letter-spacing: -.075em; line-height: .99; }
+    h1 em { color: var(--yellow); font-style: normal; }
+    .description { max-width: 515px; margin: 28px 0 34px; color: var(--muted); font-size: 17px; line-height: 1.75; }
+
+    .notify-form { display: flex; max-width: 480px; padding: 5px; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); backdrop-filter: blur(10px); }
+    .notify-form input { min-width: 0; flex: 1; border: 0; outline: 0; padding: 0 13px; color: var(--ink); background: transparent; font: inherit; font-size: 13px; }
+    .notify-form input::placeholder { color: #9b958e; }
+    .notify-form button { cursor: pointer; border: 0; border-radius: 10px; padding: 14px 17px; color: #21130e; background: var(--orange); font: 700 12px "Manrope", sans-serif; transition: transform .2s, background .2s; }
+    .notify-form button:hover { background: #ff8159; transform: translateY(-1px); }
+    .form-note { margin: 12px 0 0 3px; color: #8c8680; font-size: 11px; }
+
+    .launch-card { align-self: center; max-width: 385px; justify-self: end; width: 100%; padding: 29px; border: 1px solid var(--line); border-radius: 24px; background: linear-gradient(145deg, rgba(255,255,255,.12), rgba(255,255,255,.035)); box-shadow: 20px 24px 55px rgba(0,0,0,.22); backdrop-filter: blur(13px); }
+    .launch-card > p { margin: 0 0 24px; color: #c2bbb1; font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+    .countdown { display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px; }
+    .countdown div { padding: 14px 5px; border-radius: 12px; background: rgba(12, 12, 12, .27); text-align: center; }
+    .countdown strong { display: block; font-size: clamp(1.4rem, 2.3vw, 2rem); font-weight: 600; letter-spacing: -.06em; }
+    .countdown span { color: #a8a098; font-family: "DM Mono", monospace; font-size: 8px; letter-spacing: .08em; text-transform: uppercase; }
+    .card-bottom { display: flex; align-items: center; gap: 10px; margin-top: 23px; padding-top: 20px; border-top: 1px solid var(--line); color: #ded7ce; font-size: 12px; }
+    .avatars { display: flex; }
+    .avatars i { display: block; width: 22px; height: 22px; margin-left: -6px; border: 2px solid #4e423f; border-radius: 50%; }
+    .avatars i:first-child { margin-left: 0; background: #ff956e; }
+    .avatars i:nth-child(2) { background: #7b92e7; }
+    .avatars i:nth-child(3) { background: #e8cc76; }
+
+    footer { color: #928b84; font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: .03em; }
+    .socials { display: flex; gap: 18px; }
+    .socials a { color: #cbc4bc; text-decoration: none; transition: color .2s; }
+    .socials a:hover { color: var(--orange); }
+
+    @media (max-width: 760px) {
+      .page { padding-top: 22px; }
+      main { grid-template-columns: 1fr; gap: 45px; padding: 75px 0 52px; }
+      .launch-card { justify-self: start; max-width: 430px; }
+      .orb-one { top: -190px; right: -260px; width: 610px; height: 610px; }
+    }
+
+    @media (max-width: 430px) {
+      .page { padding-inline: 19px; }
+      .status { padding: 8px 10px; font-size: 8px; }
+      h1 { font-size: 3.1rem; }
+      .description { font-size: 15px; }
+      .notify-form { display: grid; gap: 8px; padding: 8px; }
+      .notify-form input { min-height: 38px; }
+      .notify-form button { padding: 13px; }
+      footer { align-items: flex-start; gap: 17px; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="orb orb-one"></div>
+    <div class="orb orb-two"></div>
+
+    <header>
+      <a class="brand" href="#"><span class="brand-mark">✦</span>starnux</a>
+      <span class="status">Launching soon</span>
+    </header>
+
+    <main>
+      <section class="intro">
+        <p class="eyebrow">Something new is forming</p>
+        <h1>The next big thing is <em>almost here.</em></h1>
+        <p class="description">We are building a brighter, simpler way to make the moments that matter feel extraordinary. A little patience—this will be worth it.</p>
+        <form class="notify-form" action="#">
+          <input type="email" aria-label="Email address" placeholder="Enter your email address" required>
+          <button type="submit">Keep me posted →</button>
+        </form>
+        <p class="form-note">No spam, ever. Only the good news.</p>
+      </section>
+
+      <aside class="launch-card">
+        <p>Until lift-off</p>
+        <div class="countdown" aria-label="Countdown timer">
+          <div><strong>21</strong><span>Days</span></div>
+          <div><strong>08</strong><span>Hours</span></div>
+          <div><strong>46</strong><span>Minutes</span></div>
+          <div><strong>12</strong><span>Seconds</span></div>
+        </div>
+        <div class="card-bottom"><span class="avatars"><i></i><i></i><i></i></span> Join 2,000+ curious people</div>
+      </aside>
+    </main>
+
+    <footer>
+      <span>© 2026 starnux innovations</span>
+      <nav class="socials" aria-label="Social media"><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">X / Twitter</a></nav>
+    </footer>
+  </div>
+</body>
+</html>
